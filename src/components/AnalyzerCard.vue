@@ -1,12 +1,10 @@
 <template>
   <v-card :class="reputeColor + ' lighten-2'">
-    <v-card-title>
+    <v-card-text class="pt-0">
+      <!-- Magnitude and Repute -->
       <div class="headline">
         {{ value.label }}
       </div>
-    </v-card-title>
-    <v-card-text class="pt-0">
-      <!-- Magnitude and Repute -->
       <v-chip :class="magnitudeColor">
         Magnitude:
         {{ value.m }}
@@ -14,6 +12,10 @@
       <v-chip v-if="value.r" :class="reputeColor + ' lighten-1'">
         {{ value.r }}
       </v-chip>
+      <v-chip v-if="value.timestamp">
+        {{ value.timestamp.slice(0, 4) }}
+      </v-chip>
+      
 
       <!-- Genotype/genoset summary -->
       <div class="mb-2">

@@ -12,6 +12,7 @@ def parse_snps():
     for page in utils.iter_dump('Is a snp'):
         ptitle = page.title.cdata
         ptext = page.revision.text.cdata
+        pdate = page.revision.timestamp.cdata
         name = ptitle[0].lower() + ptitle[1:]
 
         paramMap = {
@@ -27,6 +28,8 @@ def parse_snps():
         parsed = mwparserfromhell.parse(ptext)
         snpinfo = {}
         snpinfo.update(utils.extract_parameters(parsed, ['rsnum', '23andMe SNP'], paramMap))
+
+
 
         if name.startswith('rs'):
             snpinfo.pop('rsid', None)
@@ -72,7 +75,7 @@ def parse_snps():
             break
 
         # snpinfo['d'] = str(parsed)
-
+        snpinfo['timestamp'] = pdate
         yield(name, snpinfo)
 
 

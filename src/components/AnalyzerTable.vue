@@ -85,6 +85,7 @@ export default {
           m: 1.5,
           r: 'Good',
           s: 'Hmm. There is no file to analyze. As a result, this is displayed as an example.',
+          timestamp: '2012-01-09T11:07:11Z',
         },
         {
           label: 'rs4988235(C;C)',
@@ -92,6 +93,7 @@ export default {
           m: 2.5,
           r: 'Bad',
           s: 'Hmm. There is no file to analyze. As a result, this is displayed as an example.',
+          timestamp: '2012-01-09T11:07:11Z',
         },
       ];
       return;

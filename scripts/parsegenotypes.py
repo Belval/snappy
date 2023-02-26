@@ -11,6 +11,7 @@ def parse_genotypes():
     for page in utils.iter_dump('Is a genotype'):
         ptitle = page.title.cdata
         ptext = page.revision.text.cdata
+        pdate = page.revision.timestamp.cdata
         name = utils.normalize_name(ptitle)
 
         # Parse genotype
@@ -41,6 +42,7 @@ def parse_genotypes():
 
             snpinfo = {}
             snpinfo[genotype] = targetgt.group(2)
+            snpinfo['timestamp'] = pdate
             yield (snp, snpinfo)
             continue
 
@@ -62,6 +64,7 @@ def parse_genotypes():
         snpinfo = {}
         snpinfo[genotype] = genotypeinfo
 
+        snpinfo['timestamp'] = pdate
         yield (snp, snpinfo)
 
 

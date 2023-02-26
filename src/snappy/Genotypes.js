@@ -51,6 +51,7 @@ export default class Genotypes {
         } else {
           result.o = match;
         }
+        result.timestamp = GenotypeData[snp].timestamp;
       } else if (genotype.indexOf('I') !== -1) {
         // Insertion
         const candidates = [];
@@ -66,6 +67,7 @@ export default class Genotypes {
         }
         result = GenotypeData[snp][candidates[0]];
         result.o = candidates[0];
+        result.timestamp = GenotypeData[snp].timestamp;
       } else {
         throw Error(`Cannot interpret ${snp} ${genotype}: ${genotype} has no info`);
       }

@@ -8,6 +8,7 @@ def parse():
     for page in utils.iter_dump('Is a genoset'):
         ptitle = page.title.cdata
         ptext = page.revision.text.cdata
+        pdate = page.revision.timestamp.cdata
         name = utils.normalize_name(ptitle.split('/')[0])
 
         if '/criteria' in ptitle:
@@ -29,6 +30,8 @@ def parse():
             # gsinfo['d'] = str(parsed)
             if 'm' in gsinfo:
                 gsinfo['m'] = utils.filter_value(float, gsinfo['m'])
+
+            gsinfo['timestamp'] = pdate
 
             yield (name, gsinfo)
 
